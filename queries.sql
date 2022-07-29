@@ -29,3 +29,23 @@ id SERIAL NOT NULL PRIMARY KEY,
 number VARCHAR (10) NOT NULL,
 type TEXT
 );
+
+CREATE TABLE "customerAddresses" (
+id SERIAL NOT NULL PRIMARY KEY,
+"customerId" INTEGER REFERENCES customers(id) UNIQUE,
+street VARCHAR (50) NOT NULL,
+number INTEGER NOT NULL,
+complement VARCHAR (10),
+"postalCode" INTEGER NOT NULL,
+"cityId" INTEGER REFERENCES cities(id)
+);
+
+CREATE TABLE "bankAccount" (
+id SERIAL NOT NULL PRIMARY KEY,
+"customerId" INTEGER REFERENCES customers(id) UNIQUE,
+"accountNumber" INTEGER UNIQUE NOT NULL,
+agency INTEGER NOT NULL,
+"openDate" TIMESTAMP NOT NULL DEFAULT NOW(),
+"closeDate" TIMESTAMP
+);
+
