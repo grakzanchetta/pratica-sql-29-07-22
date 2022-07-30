@@ -49,3 +49,38 @@ agency INTEGER NOT NULL,
 "closeDate" TIMESTAMP
 );
 
+CREATE TABLE transactions (
+id SERIAL NOT NULL PRIMARY KEY,
+"bankAccountId" INTEGER REFERENCES "bankAccount"(id) UNIQUE,
+amount INTEGER NOT NULL,
+type VARCHAR(10),
+description TEXT,
+cancelled TIMESTAMP
+);
+
+CREATE TABLE "creditCards" (
+ID SERIAL NOT NULL PRIMARY KEY,
+"bankAccountId" INTEGER REFERENCES "bankAccount"(id) UNIQUE,
+name TEXT NOT NULL,
+number INTEGER NOT NULL,
+"securiyCode" INTEGER NOT NULL,
+"expirationMonth" INTEGER NOT NULL,
+"expirationYear" INTEGER NOT NULL,
+password INTEGER NOT NULL,
+"limit" INTEGER NOT NULL
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
